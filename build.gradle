@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
+group = 'io.github.juuxel'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'com.miglayout', name: 'miglayout-swing', version: '4.2'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'juuxel.modapplier.Main'
+    }
+}
+
+shadowJar {
+    from 'LICENSE'
+    from sourceSets.main.allSource
+}
+
+build.dependsOn shadowJar
